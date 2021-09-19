@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/fireplace/static/css/main.07473cde.chunk.css",
-    "main.js": "/fireplace/static/js/main.f9da5410.chunk.js",
-    "main.js.map": "/fireplace/static/js/main.f9da5410.chunk.js.map",
+    "main.css": "/fireplace/static/css/main.5711688c.chunk.css",
+    "main.js": "/fireplace/static/js/main.3758bce4.chunk.js",
+    "main.js.map": "/fireplace/static/js/main.3758bce4.chunk.js.map",
     "runtime-main.js": "/fireplace/static/js/runtime-main.eb32417a.js",
     "runtime-main.js.map": "/fireplace/static/js/runtime-main.eb32417a.js.map",
     "static/js/2.edb5168e.chunk.js": "/fireplace/static/js/2.edb5168e.chunk.js",
     "static/js/2.edb5168e.chunk.js.map": "/fireplace/static/js/2.edb5168e.chunk.js.map",
     "index.html": "/fireplace/index.html",
-    "static/css/main.07473cde.chunk.css.map": "/fireplace/static/css/main.07473cde.chunk.css.map",
+    "static/css/main.5711688c.chunk.css.map": "/fireplace/static/css/main.5711688c.chunk.css.map",
     "static/js/2.edb5168e.chunk.js.LICENSE.txt": "/fireplace/static/js/2.edb5168e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.eb32417a.js",
     "static/js/2.edb5168e.chunk.js",
-    "static/css/main.07473cde.chunk.css",
-    "static/js/main.f9da5410.chunk.js"
+    "static/css/main.5711688c.chunk.css",
+    "static/js/main.3758bce4.chunk.js"
   ]
 }
