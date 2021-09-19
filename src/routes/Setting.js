@@ -55,7 +55,7 @@ const Setting = ({ refreshUser, userObj }) => {
             type="text"
             placeholder="Display name"
             value={newDisplayName}
-            className="formInput"
+            className="formInputSetting"
           />
           <input type="submit" value="Update username" className="formBtn" />
         </form>
