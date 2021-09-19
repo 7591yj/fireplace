@@ -11,8 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "css/Auth.css";
 
 const Auth = () => {
-  const [error, setError] = useState("");
-
   const onSocialClick = async (event) => {
     const {
       target: { name },
@@ -33,7 +31,7 @@ const Auth = () => {
         // credential.accessToken;
       }
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
   };
 
@@ -49,7 +47,6 @@ const Auth = () => {
           <FontAwesomeIcon icon={faGithub} />
           <span className="oauth">Continue with Github</span>
         </button>
-        {error && <span className="error">{error}</span>}
       </div>
     </div>
   );
