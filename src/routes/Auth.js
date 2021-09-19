@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { authService } from "fbase";
 import {
   signInWithPopup,
@@ -17,7 +17,6 @@ const Auth = () => {
     } = event;
 
     let provider;
-
     try {
       if (name === "google") {
         provider = new GoogleAuthProvider();

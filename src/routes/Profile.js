@@ -34,7 +34,9 @@ const Profile = ({ userObj }) => {
   return (
     <>
       <div className="profileIntro">
-        <img src={photoURL} alt="Profile" className="profileImg" />
+        {photoURL && (
+          <img src={photoURL} alt="Profile" className="profileImg" />
+        )}
         <h2>{userObj.displayName}</h2>
       </div>
       <h3>My Ignites: </h3>

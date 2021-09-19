@@ -99,11 +99,13 @@ const AuthForm = () => {
             fontSize: "12px",
             textAlign: "center",
             margin: "10px",
+            color: "tomato",
           }}
         >
-          Please note that using Google or Github accout for logging in is
-          highly recommanded, <br />
-          but you can rather use an email and password.
+          At this point, there is an error with OAuth login (Google/Github).{" "}
+          <br /> Logging in via OAuth works sometimes, but in many cases does
+          not. <br />
+          Until it gets fixed, I highly recommand using email & password.
         </span>
       </div>
     </>
