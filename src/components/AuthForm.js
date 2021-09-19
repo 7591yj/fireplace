@@ -63,8 +63,6 @@ const AuthForm = () => {
         >
           Welcome to FirePlace! Please{" "}
           {newAccount ? "create an account" : "sign in"} to continue.
-          <br />
-          Or, if you'd like, you can rather use Google or Github account.
         </span>
         <form onSubmit={onSubmit}>
           <input
@@ -94,6 +92,18 @@ const AuthForm = () => {
         </form>
         <span onClick={toggleAccount} className="changer">
           {newAccount ? "or sign in" : "or create account"}
+        </span>
+        <span
+          style={{
+            fontWeight: 400,
+            fontSize: "12px",
+            textAlign: "center",
+            margin: "10px",
+          }}
+        >
+          Please note that using Google or Github accout for logging in is
+          highly recommanded, <br />
+          but you can rather use an email and password.
         </span>
       </div>
     </>

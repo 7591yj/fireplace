@@ -53,7 +53,8 @@ li {
 }
 
 footer {
-  margin: 10px;
+  margin: 8px;
+  font-size: 12px;
   color: #9c9ca0;
   position: fixed;
   bottom: 0;
