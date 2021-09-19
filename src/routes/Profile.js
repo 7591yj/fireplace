@@ -1,7 +1,6 @@
-import { collection, getDocs, query, where } from "@firebase/firestore";
 import { updateProfile } from "@firebase/auth";
-import { authService, dbService } from "fbase";
-import React, { useEffect, useState } from "react";
+import { authService } from "fbase";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 
 const Profile = ({ refreshUser, userObj }) => {
@@ -29,21 +28,6 @@ const Profile = ({ refreshUser, userObj }) => {
       refreshUser();
     }
   };
-
-  const getMyIgnites = async () => {
-    const collectionQuery = query(
-      collection(dbService, "ignites"),
-      where("creatorId", "==", userObj.uid)
-    );
-    const querySnapshot = await getDocs(collectionQuery);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-    });
-  };
-
-  useEffect(() => {
-    getMyIgnites();
-  }, []);
 
   return (
     <>
