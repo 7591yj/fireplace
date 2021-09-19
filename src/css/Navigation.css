@@ -1,0 +1,31 @@
+header {
+  box-sizing: content-box;
+  display: flex;
+  width: 100vh;
+}
+
+ul {
+  list-style: none;
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.home {
+  flex: 0 0 80%;
+}
+
+/* .profile {
+  flex: 0 0 -50%;
+} */
+
+.nav-div {
+  flex: 0 0 -20%;
+}

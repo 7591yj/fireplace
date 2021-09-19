@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { updateProfile } from "@firebase/auth";
 import AppRouter from "components/Router";
 import { authService } from "fbase";
+import "css/App.css";
+import { faFire } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -20,7 +23,6 @@ function App() {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
-          // updateProfile: (args) => updateProfile(user, args),
         });
       } else {
         setUserObj(null);
@@ -34,22 +36,38 @@ function App() {
     setUserObj({
       displayName: authService.currentUser.displayName,
       uid: authService.currentUser.uid,
-      // updateProfile: (args) => updateProfile(authService.currentUser, args),
     });
   };
 
   return (
     <>
-      {init ? (
-        <AppRouter
-          refreshUser={refreshUser}
-          isLoggedIn={isLoggedIn}
-          userObj={userObj}
-        />
-      ) : (
-        "Initializing..."
-      )}
-      <footer>&copy; FirePlace {new Date().getFullYear()}</footer>
+      <div className="appContainer">
+        {init ? (
+          <AppRouter
+            refreshUser={refreshUser}
+            isLoggedIn={isLoggedIn}
+            userObj={userObj}
+          />
+        ) : (
+          <div className="init-div">
+            <FontAwesomeIcon
+              className="init-icon"
+              icon={faFire}
+              color={"#2f3640"}
+              size="2x"
+            />
+            <span className="init-text">Initializing...</span>
+          </div>
+        )}
+        <footer>
+          FirePlace {new Date().getFullYear()} &#183; icons delivered by{" "}
+          <a className="footerA" href="https://fontawesome.com/">
+            Font Awesome
+          </a>
+          , favicon uses "fire" icon from the same origin but with a circle
+          background
+        </footer>
+      </div>
     </>
   );
 }

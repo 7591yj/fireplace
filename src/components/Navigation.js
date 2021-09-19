@@ -1,22 +1,67 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFire, faUser, faCog } from "@fortawesome/free-solid-svg-icons";
+import "css/Navigation.css";
 
 const Navigation = ({ userObj }) => (
-  <nav>
+  <header>
     <ul>
-      <li>
-        <Link to="/">Home</Link>
+      <li className="home">
+        <Link
+          to="/"
+          style={{
+            marginRight: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontSize: 12,
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faFire}
+            color={"#2f3640"}
+            size="2x"
+            id="home-item"
+          />
+        </Link>
       </li>
-      <li>
+      <li className="profile">
         {userObj && (
-          <Link to="/profile">
-            {userObj.displayName
-              ? `${userObj.displayName}'s profile`
-              : "Profile"}
+          <Link
+            to="/profile"
+            style={{
+              marginLeft: 10,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              fontSize: 12,
+            }}
+          >
+            <FontAwesomeIcon icon={faUser} color={"#2f3640"} size="2x" />
           </Link>
         )}
       </li>
+      <div className="nav-div">
+        <li>
+          {userObj && (
+            <Link
+              to="/setting"
+              style={{
+                marginLeft: 10,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                fontSize: 12,
+              }}
+            >
+              <FontAwesomeIcon icon={faCog} color={"#2f3640"} size="2x" />
+            </Link>
+          )}
+        </li>
+      </div>
     </ul>
-  </nav>
+  </header>
 );
+
 export default Navigation;

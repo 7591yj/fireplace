@@ -1,13 +1,18 @@
+import React, { useState } from "react";
 import { authService } from "fbase";
 import {
   signInWithPopup,
   GithubAuthProvider,
   GoogleAuthProvider,
 } from "@firebase/auth";
-import React from "react";
 import AuthForm from "components/AuthForm";
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "css/Auth.css";
 
 const Auth = () => {
+  const [error, setError] = useState("");
+
   const onSocialClick = async (event) => {
     const {
       target: { name },
@@ -28,20 +33,23 @@ const Auth = () => {
         // credential.accessToken;
       }
     } catch (error) {
-      console.log(error);
+      setError(error);
     }
   };
 
   return (
-    <div>
+    <div className="authContainer">
       <AuthForm />
       <div>
-        <button onClick={onSocialClick} name="google">
-          Continue with Google
+        <button onClick={onSocialClick} name="google" className="google">
+          <FontAwesomeIcon icon={faGoogle} />
+          <span className="oauth">Continue with Google</span>
         </button>
-        <button onClick={onSocialClick} name="github">
-          Continue with Github
+        <button onClick={onSocialClick} name="github" className="github">
+          <FontAwesomeIcon icon={faGithub} />
+          <span className="oauth">Continue with Github</span>
         </button>
+        {error && <span className="error">{error}</span>}
       </div>
     </div>
   );

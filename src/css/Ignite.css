@@ -1,0 +1,30 @@
+.container {
+  margin-top: 40px;
+}
+
+.igniteImage {
+  width: 400px;
+  height: auto;
+}
+
+.igniteBottomRow {
+  border-top: none;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.igniteTitle {
+  display: flex;
+  margin: 10px;
+}
+
+.igniteControls {
+  display: flex;
+}
+
+.igniteWrittenBy {
+  font-size: 10px;
+  color: #9c9ca0;
+}

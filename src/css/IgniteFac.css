@@ -1,0 +1,51 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formInput {
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid black;
+  background-color: #1fe0;
+}
+
+.fileInput {
+  color: #2f3640;
+}
+
+.formBtn {
+  cursor: pointer;
+  padding: 7px 20px;
+  text-align: center;
+  color: white;
+  border: none;
+  background-color: #2f3640;
+}
+
+.factoryForm__attachment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.factoryForm__attachment img {
+  width: 400px;
+  height: auto;
+}
+
+.factoryForm__clear {
+  color: #2f3640;
+  cursor: pointer;
+  text-align: center;
+}
+
+.factoryForm__clear span {
+  margin-right: 10px;
+  font-size: 12px;
+}

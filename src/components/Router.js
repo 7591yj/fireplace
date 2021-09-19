@@ -2,6 +2,7 @@ import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "components/Navigation";
 import Auth from "routes/Auth";
+import Setting from "routes/Setting";
 import Profile from "routes/Profile";
 import Home from "routes/Home";
 
@@ -16,7 +17,10 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
               <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
-              <Profile userObj={userObj} refreshUser={refreshUser} />
+              <Profile userObj={userObj} />
+            </Route>
+            <Route exact path="/setting">
+              <Setting userObj={userObj} refreshUser={refreshUser} />
             </Route>
           </>
         ) : (

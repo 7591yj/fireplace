@@ -1,46 +1,52 @@
-import { updateProfile } from "@firebase/auth";
-import { authService } from "fbase";
-import React, { useState } from "react";
-import { useHistory } from "react-router";
+import React, { useEffect, useState } from "react";
+import { collection, getDocs, query, where } from "@firebase/firestore";
+import { dbService, authService } from "fbase";
+import Ignite from "components/Ignite";
+import "css/Profile.css";
 
-const Profile = ({ refreshUser, userObj }) => {
-  const history = useHistory();
-  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
+const Profile = ({ userObj }) => {
+  const [ignites, setIgnites] = useState([]);
 
-  const onLogOutClick = () => {
-    authService.signOut();
-    history.push("/");
+  const getMyIgnites = async () => {
+    const collectionQuery = query(
+      collection(dbService, "ignites"),
+      where("creatorId", "==", userObj.uid)
+    );
+
+    const querySnapshot = await getDocs(collectionQuery);
+    const igniteArray = querySnapshot.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      };
+    });
+    setIgnites(igniteArray);
   };
 
-  const onChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setNewDisplayName(value);
-  };
+  useEffect(() => {
+    return () => {
+      getMyIgnites();
+    };
+  }, [getMyIgnites()]);
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    if (userObj.displayName !== newDisplayName) {
-      await updateProfile(authService.currentUser, {
-        displayName: newDisplayName,
-      });
-      refreshUser();
-    }
-  };
+  const photoURL = authService.currentUser.photoURL;
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          type="text"
-          placeholder="Display name"
-          value={newDisplayName}
-        />
-        <input type="submit" value="Update profile" />
-      </form>
-      <button onClick={onLogOutClick}>Log out</button>
+      <div className="profileIntro">
+        <img src={photoURL} alt="Profile" className="profileImg" />
+        <h2>{userObj.displayName}</h2>
+      </div>
+      <h3>My Ignites: </h3>
+      <div>
+        {ignites.map((ignite) => (
+          <Ignite
+            key={ignite.id}
+            igniteObject={ignite}
+            isOwner={ignite.creatorId === userObj.uid}
+          />
+        ))}
+      </div>
     </>
   );
 };

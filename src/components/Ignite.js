@@ -2,6 +2,9 @@ import { dbService, storageService } from "fbase";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { deleteObject, ref } from "firebase/storage";
+import { faMinusSquare, faPenSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "css/Ignite.css";
 
 const Ignite = ({ igniteObject, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -41,37 +44,59 @@ const Ignite = ({ igniteObject, isOwner }) => {
         <>
           {isOwner && (
             <>
-              <form onSubmit={onSubmit}>
-                <input
-                  type="text"
-                  placeholder="Edit your Ignite"
-                  value={newIgnite}
-                  required
-                  onChange={onChange}
-                />
-                <input type="submit" value="Update Ignite" />
-              </form>
-              <button onClick={toggleEditing}>Cancel</button>
+              <div className="igniteForm">
+                <form onSubmit={onSubmit} className="container">
+                  <input
+                    type="text"
+                    placeholder="Edit your Ignite"
+                    value={newIgnite}
+                    required
+                    onChange={onChange}
+                  />
+                  <input type="submit" value="Update Ignite" />
+                </form>
+                <button onClick={toggleEditing}>Cancel</button>
+              </div>
             </>
           )}
         </>
       ) : (
         <>
-          <h4>{igniteObject.text}</h4>
-          {igniteObject.attachmentURL && (
-            <img
-              src={igniteObject.attachmentURL}
-              width="50px"
-              height="50px"
-              alt="Attached file"
-            />
-          )}
-          {isOwner && (
-            <>
-              <button onClick={onDeleteClick}>Delete</button>
-              <button onClick={toggleEditing}>Edit</button>
-            </>
-          )}
+          <div className="container">
+            {igniteObject.attachmentURL && (
+              <img
+                className="igniteImage"
+                src={igniteObject.attachmentURL}
+                alt="Attached file"
+              />
+            )}
+            <span className="igniteWrittenBy">
+              Written by: {igniteObject.creatorDisplayName}
+            </span>
+            <div className="igniteBottomRow">
+              <h4 className="igniteTitle">{igniteObject.text}</h4>
+              {isOwner && (
+                <>
+                  <div className="igniteControls">
+                    <FontAwesomeIcon
+                      icon={faMinusSquare}
+                      color={"#2f3640"}
+                      size="1x"
+                      onClick={onDeleteClick}
+                      className="igniteDelete"
+                    />
+                    <FontAwesomeIcon
+                      icon={faPenSquare}
+                      color={"#2f3640"}
+                      size="1x"
+                      onClick={toggleEditing}
+                      className="igniteEdit"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         </>
       )}
     </div>

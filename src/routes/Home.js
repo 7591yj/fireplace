@@ -33,7 +33,7 @@ const Home = ({ userObj }) => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <IgniteFac userObj={userObj} />
       <div>
         {ignites.map((ignite) => (

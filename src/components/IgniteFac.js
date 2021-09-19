@@ -3,6 +3,9 @@ import { addDoc, collection } from "firebase/firestore";
 import { storageService, dbService } from "fbase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { faImage, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "css/IgniteFac.css";
 
 const IgniteFac = ({ userObj }) => {
   const [ignite, setIgnite] = useState("");
@@ -25,6 +28,7 @@ const IgniteFac = ({ userObj }) => {
       text: ignite,
       createdAt: Date.now(),
       creatorId: userObj.uid,
+      creatorDisplayName: userObj.displayName,
       attachmentURL,
     };
 
@@ -72,32 +76,45 @@ const IgniteFac = ({ userObj }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form">
+      {attachment && (
+        <div className="factoryForm__attachment">
+          <img
+            alt="Attachment preview"
+            src={attachment}
+            style={{
+              backgroundImage: attachment,
+            }}
+          />
+          <div className="factoryForm__clear" onClick={onClearAttachment}>
+            <FontAwesomeIcon icon={faTimes} />
+            <span> Remove</span>
+          </div>
+        </div>
+      )}
       <input
+        className="formInput"
         value={ignite}
         onChange={onChange}
         type="text"
         placeholder="What's on your mind?"
         maxLength={120}
       />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={onFileChange}
-        ref={fileInput}
-      />
-      <input type="submit" value="Ignite" />
-      {attachment && (
-        <div>
-          <img
-            src={attachment}
-            width="50px"
-            height="50px"
-            alt="Attached file"
-          />
-          <button onClick={onClearAttachment}>Clear</button>
-        </div>
-      )}
+      <div>
+        <label for="attach-file" className="factoryInput__label">
+          <FontAwesomeIcon icon={faImage} />
+          <span style={{ fontSize: 12 }}> Add a picture</span>
+        </label>
+        <input
+          id="attach-file"
+          type="file"
+          accept="image/*"
+          onChange={onFileChange}
+          ref={fileInput}
+          style={{ opacity: 0 }}
+        />
+        <input type="submit" value="Ignite" className="formBtn" />
+      </div>
     </form>
   );
 };

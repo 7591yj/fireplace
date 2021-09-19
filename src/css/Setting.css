@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.emailViewer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.email {
+  border-bottom: 2px solid black;
+}
+
+.emailWarn {
+  font-size: 10px;
+  color: #9c9ca0;
+}
+
+.displayNameEdit {
+  display: flex;
+  flex-direction: row;
+}
+
+.formInput {
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid black;
+  background-color: #1fe0;
+}
+
+.formBtn {
+  cursor: pointer;
+  padding: 7px 20px;
+  text-align: center;
+  color: white;
+  border: none;
+  background-color: #2f3640;
+}
+
+.checkerDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.checker {
+  margin-right: 10px;
+}
+
+.logOut {
+  margin-top: 20px;
+  cursor: pointer;
+  padding: 7px 20px;
+  text-align: center;
+  color: white;
+  border: none;
+  background-color: #2f3640;
+}
