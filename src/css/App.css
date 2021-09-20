@@ -54,9 +54,9 @@ li {
 
 footer {
   margin: 8px;
+  margin-top: 20px;
   font-size: 12px;
   color: #9c9ca0;
-  position: fixed;
   bottom: 0;
 }
 
